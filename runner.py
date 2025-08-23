@@ -5,6 +5,8 @@ from kivy.uix.button import Button
 from kivy.properties import NumericProperty, BooleanProperty
 
 class Runner(BoxLayout):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
     value = NumericProperty(0)
     finished = BooleanProperty(False)
 
