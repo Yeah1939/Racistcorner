@@ -14,3 +14,4 @@ class Sits(Label):
         tmp = self.total - self.current
         my_text = f"Залишилось присідань{tmp}"
         self.text = my_text
+
