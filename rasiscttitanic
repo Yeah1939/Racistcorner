@@ -1,0 +1,30 @@
+# Тут має бути твій код
+import pandas as pd
+#from sklearnpreprocessing import StandardScaler
+#from sklearn.metrics import confusion_matrix,accuracy_score
+#from sklearn.model_selection import train_test_split
+#from sklearn.neighbors import KNeighborsClassifier
+
+df = pd.read_csv("titanic.csv")
+df.drop(["PassengerId","Name","Ticket","Fare","Cabin"],axis= 1,inplace= True)
+age_1 = df[df["Pclass"] == 1]["Age"].mean()
+age_2 = df[df["Pclass"] == 2]["Age"].mean()
+age_3 = df[df["Pclass"] == 3]["Age"].mean()
+
+def mean_age(string):
+    if pd.isnull(string["Age"]):
+        if string["Pclass"] == 1:
+            return age_1
+        if string["Pclass"] == 2:
+            return age_2
+        if string["Pclass"] == 3:
+            return age_3
+    return string["Age"]
+
+df["Age"] = df.apply(mean_age,axis= 1)
+
+df.info()
+
+
+
+print(df["Pclass"].value_counts())
